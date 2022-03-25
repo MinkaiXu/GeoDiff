@@ -1,0 +1,38 @@
+model:
+  type: diffusion # dsm and diffusion
+  network: dualenc
+  hidden_dim: 128
+  num_convs: 6
+  num_convs_local: 4
+  cutoff: 10.0
+  mlp_act: relu
+  beta_schedule: sigmoid
+  beta_start: 1.e-7
+  beta_end: 9.e-3
+  num_diffusion_timesteps: 1000
+  edge_order: 3
+  edge_encoder: mlp
+  smooth_conv: true
+
+train:
+  seed: 2021
+  batch_size: 32
+  val_freq: 5000
+  max_iters: 10000000
+  max_grad_norm: 30000.0  # Different from QM9
+  anneal_power: 2.0
+  optimizer:
+    type: adam
+    lr: 1.e-3
+    weight_decay: 0.
+    beta1: 0.95
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.6
+    patience: 10
+
+dataset:
+  train: ./data/GEOM/Drugs/train_data_40k.pkl
+  val: ./data/GEOM/Drugs/val_data_5k.pkl
+  test: ./data/GEOM/Drugs/test_data_1k.pkl
