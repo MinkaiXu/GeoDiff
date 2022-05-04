@@ -18,7 +18,7 @@ train:
   seed: 2021
   batch_size: 64
   val_freq: 5000
-  max_iters: 10000000
+  max_iters: 3000000
   max_grad_norm: 10000.0
   anneal_power: 2.0
   optimizer:
