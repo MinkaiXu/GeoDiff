@@ -207,7 +207,7 @@ class DualEncoderEpsNetwork(nn.Module):
         edge_inv_global = self.grad_global_dist_mlp(h_pair_global) * (1.0 / sigma_edge)    # (E_global, 1)
         
         # Encoding local
-        edge_attr_local = self.edge_encoder_local(
+        edge_attr_local = self.edge_encoder_global(
             edge_length=edge_length,
             edge_type=edge_type
         )   # Embed edges
